@@ -1,0 +1,21 @@
+<h2>Search</h2>
+<div>
+  <label>
+    Enter search query:
+    <input [(ngModel)]="request.query" placeholder="name" />
+  </label>
+  <input type="button" value="search" (click)="onSearch()" />
+</div>
+
+<div *ngIf="response !== null">
+  <h3>Search results:</h3>
+  <div *ngIf="response.error" class="error">{{ response.error }}</div>
+
+  <div *ngIf="response.items" class="search-results">
+    <ul>
+      <li *ngFor="let item of response.items">
+        {{ item.searchEngine }} => {{ item.title }}
+      </li>
+    </ul>
+  </div>
+</div>
